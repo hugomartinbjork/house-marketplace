@@ -11,5 +11,14 @@ const firebaseConfig = {
   messagingSenderId: '658766803973',
   appId: '1:658766803973:web:a4a35bf7e938ca4986986c',
 }
+// Initialize Firebase
+initializeApp(firebaseConfig)
 
 export const db = getFirestore()
+
+// The apiKey in this configuration snippet just identifies your
+// Firebase project on the Google servers. It is not a security risk
+// for someone to know it. In fact, it is necessary for them to know it,
+// in order for them to interact with your Firebase project. This same
+// configuration data is also included in every iOS and Android app that
+// uses Firebase as its backend.
