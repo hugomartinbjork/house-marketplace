@@ -9,6 +9,7 @@ import {
   limit,
   //   startAfter,
 } from 'firebase/firestore'
+import ListingItem from '../components/ListingItem'
 import { db } from '../firebase.config'
 import { toast } from 'react-toastify'
 import Spinner from '../components/Spinner'
@@ -67,8 +68,12 @@ const Category = () => {
         <>
           <main>
             <ul className="categoryListings">
-              {listings.map((listing, index) => (
-                <h3 key={index}>{listing.data.name}</h3>
+              {listings.map((listing) => (
+                <ListingItem
+                  listing={listing.data}
+                  id={listing.id}
+                  key={listing.id}
+                />
               ))}
             </ul>
           </main>
