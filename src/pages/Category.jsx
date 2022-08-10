@@ -50,7 +50,6 @@ const Category = () => {
       }
     }
     fetchListings()
-    console.log(params)
   }, [params])
 
   return (

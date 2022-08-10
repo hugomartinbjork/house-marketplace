@@ -56,7 +56,7 @@ const CreateListing = () => {
     if (isMounted) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          setFormData({ ...formData, useRef: user.uid })
+          setFormData({ ...formData, userRef: user.uid })
         } else {
           navigate('/')
         }
@@ -106,7 +106,6 @@ const CreateListing = () => {
       geoLocation.lat = latitude
       geoLocation.lng = longitude
       location = address
-      console.log(geoLocation, location)
     }
 
     const storeImage = async (image) => {
@@ -158,8 +157,9 @@ const CreateListing = () => {
       geoLocation,
       timestamp: serverTimestamp(),
     }
-    delete formDataCopy.images, delete formDataCopy.address
-    location && (formDataCopy.location = location)
+    formDataCopy.location = address
+    delete formDataCopy.images
+    delete formDataCopy.address
     !formDataCopy.offer && delete formDataCopy.discountedPrice
 
     const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
