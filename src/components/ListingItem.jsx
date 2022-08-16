@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom'
 import { ReactComponent as DeleteIcon } from '../assets/svg/deleteIcon.svg'
+import { ReactComponent as EditIcon } from '../assets/svg/editIcon.svg'
 import bedIcon from '../assets/svg/bedIcon.svg'
 import bathtubIcon from '../assets/svg/bathtubIcon.svg'
 
-const ListingItem = ({ listing, id, onDelete }) => {
+const ListingItem = ({ listing, id, onEdit, onDelete }) => {
   return (
     <li className="categoryListing">
       <Link
         to={`/category/${listing.type}/${id}`}
+        // to={'/category/' + listing.type + '/' + id} same thing
         className="categoryListingLink"
       >
         <img
@@ -35,11 +37,11 @@ const ListingItem = ({ listing, id, onDelete }) => {
                 ? `${listing.bedrooms} Bedrooms`
                 : '1 Bedroom'}
             </p>
-            <img src={bathtubIcon} alt="batht" />
+            <img src={bathtubIcon} alt="bath" />
             <p className="categoryListingInfotext">
               {listing.bathrooms > 1
                 ? `${listing.bathrooms} Bathrooms`
-                : '1 Bathrooms'}
+                : '1 Bathroom'}
             </p>
           </div>
         </div>
@@ -49,9 +51,13 @@ const ListingItem = ({ listing, id, onDelete }) => {
         <DeleteIcon
           className="removeIcon"
           fill="rgb(231, 76,60)"
-          onClick={() => onDelete(listing.id, listing.name)}
+          onClick={onDelete}
+          //OnDelete doesn't nned to take in id here since it allready got it from profile jsx.
+          // If no parameter was passed in to the function from profile then -->  onClick={() => onDelete(id)}//
         />
       )}
+
+      {onEdit && <EditIcon className="editIcon" onClick={() => onEdit(id)} />}
     </li>
   )
 }

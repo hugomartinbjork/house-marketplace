@@ -15,7 +15,6 @@ import {
 import { toast } from 'react-toastify'
 import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
 import homeIcon from '../assets/svg/homeIcon.svg'
-import Spinner from '../components/Spinner'
 import ListingItem from '../components/ListingItem'
 
 const Profile = () => {
@@ -85,12 +84,17 @@ const Profile = () => {
   const onDelete = async (listingId) => {
     if (window.confirm('Are you sure you want to delete?')) {
       await deleteDoc(doc(db, 'listings', listingId))
-      const updatedListing = listings.filter(
+      const updatedListings = listings.filter(
         (listing) => listing.id !== listingId
       )
-      setListings(updatedListing)
+      setListings(updatedListings)
       toast.success('Succesfully deleted listing')
     }
+  }
+
+  const onEdit = (poop) => {
+    navigate(`/edit-listing/${poop}`)
+    console.log(poop)
   }
 
   return (
@@ -150,6 +154,7 @@ const Profile = () => {
                     listing={listing.data}
                     id={listing.id}
                     onDelete={() => onDelete(listing.id)}
+                    onEdit={() => onEdit(listing.id)}
                   />
                 )
               })}
