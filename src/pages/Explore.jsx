@@ -4,6 +4,7 @@ import sellCategoryImage from '../assets/jpg/sellCategoryImage.jpg'
 import Slider from '../components/Slider'
 
 const Explore = () => {
+  // if()
   return (
     <div className="explore">
       <header>

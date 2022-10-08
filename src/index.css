@@ -301,11 +301,24 @@ button {
     margin-bottom: 10rem;
   }
 }
+
+/* @media (max-width: 1217px) {
+  .explore {
+    margin-bottom: 10rem;
+  }
+} */
+
 @media (max-height: 536) {
   .explore {
     margin-bottom: 10rem;
   }
 }
+
+/* @media (max-width: 536) {
+  .explore {
+    margin-bottom: 100rem;
+  }
+} */
 
 .exploreHeading,
 .exploreCategoryHeading {
@@ -373,6 +386,7 @@ button {
 .exploreCategories {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 85px;
 }
 .exploreCategories a {
   width: 48%;
